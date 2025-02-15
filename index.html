@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger Landing Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        <div class="stars"></div>
+        <div class="navbar">
+            <img src="burger1.jpg" alt="">
+            <div class="center-nav">
+                <a href="">Home</a>
+                <a href="">Menu</a>
+                <a href="">About</a>
+                <a href="">Shop</a>
+            </div>
+            <div class="social">
+                <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="#"><i class="fa-solid fa-user"></i></a>
+            </div>
+        </div>
+        <div class="text">
+            <h1>THE ULTIMATE <br> BURGER HAUEM</h1>
+            <P>A burger is a popular sandwich consisting of a cooked patty—typically made from ground beef, chicken, or
+                plant-based alternatives—placed inside a sliced bun. It is often topped with ingredients like lettuce,
+                tomato, onion, pickles, cheese, and condiments such as ketchup, mayonnaise, or mustard. Some variations
+                include bacon, fried eggs, or specialty sauces for added flavor. Burgers can be grilled, pan-fried, or
+                flame-broiled and are commonly served with fries, coleslaw, or a side of salad. They are a staple in
+                fast food and casual dining, loved for their juicy, savory taste and endless customization options.</P>
+            <!--<a href="" class="btn"></a>
+            <a href="" class="btn"></a>-->
+        </div>
+        <div class="burger">
+            <img src="burger2.jpg" alt="">
+            <img src="burger3.jpg" alt="">
+            <img src="burger4.jpg" alt="">
+            <img src="burger5.jpg" alt="">
+            <img src="burger1.jpg" alt="">
+
+        </div>
+
+        <div class="burger-toggle">
+            <img src="burger1.jpg" alt="" class="active">
+        </div>
+
+
+    </header>
+    <script>
+
+        const burgerImages = document.querySelectorAll('.burger img');
+        const toggleImages = document.querySelectorAll('.burger-toggle img');
+        let currentIndex = 0;
+        toggleImages[currentIndex].classList.add('active');
+
+        burgerImages.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                toggleImages.forEach(toggleImg => toggleImg.classList.remove('active'));
+                toggleImages[currentIndex].classList.add('active');
+                toggleImages[currentIndex].src = burgerImages[index].src;
+                toggleImages[currentIndex].src = (currentIndex + 1) % toggleImages.length;
+            });
+        });
+
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = `star`;
+                star.style.left = `${Math.random() * windowWidth}px`;
+                star.style.top = `${Math.random() * windowHeight}px`;
+                starsContainer.appendChild(star);
+            }
+        }
+
+        window.addEventListener('load', createStars);
+
+    </script>
+
+</body>
+
+</html>
